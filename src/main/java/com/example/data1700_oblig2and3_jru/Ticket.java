@@ -2,12 +2,21 @@ package com.example.data1700_oblig2and3_jru;
 
 public class Ticket {
     private String movieSelector;
-    private Integer amount;
+    private int amount;
     private String firstName;
     private String lastName;
     private String phoneNr;
     private String email;
 
+    @Override
+    public String toString() {
+        return "\n" + "Movie: " + movieSelector + "\n" +
+                "Amount: " + amount + "\n" +
+                "First name: " + firstName + "\n" +
+                "Last name: " + lastName + "\n" +
+                "Phone Nr: " + phoneNr + "\n" +
+                "Email:" + email + "\n";
+    }
 
     public String getMovieSelector() {
         return movieSelector;
@@ -17,11 +26,11 @@ public class Ticket {
         this.movieSelector = movieSelector;
     }
 
-    public Integer getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

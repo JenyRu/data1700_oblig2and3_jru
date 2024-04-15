@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>Order movie tickets</h1>
-<!--The form sends the input to "saveTicket" onsubmit and "return false" avoids a page reload.-->
-<form name="ticketForm" onsubmit="inputTicket(); return false">
+<!--Onsubmit="return false" avoids a page reload.-->
+<form name="ticketForm" onsubmit="return false;">
     <p>
         <label for="movieSelector">Pick a movie:</label>
         <select id="movieSelector" required>
@@ -42,8 +42,7 @@
             </td>
         </tr>
         <tr>
-            <!-- Type="tel" validates the input before it is submitted.
-            The standard pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" was
+            <!--The standard pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" was
             changed to "[0-9]{8}" because of personal preference-->
             <td>Phone</td>
             <td>
@@ -51,7 +50,6 @@
                 <input type="text" id="phoneNr" name="phoneNr" pattern="[0-9]{8}$" title="Must be a valid Norwegian phone number like: 47583126" required>
             </td>
         </tr>
-        <!-- Type="email" validates the input before it is submitted.-->
         <tr>
             <td>Email</td>
             <td>
@@ -60,7 +58,7 @@
             </td>
         </tr>
     </table>
-    <button type="submit">Buy tickets</button>
+    <button type="submit" onclick="inputTicket()">Buy tickets</button>
 </form>
 
 <h2>Current tickets</h2>

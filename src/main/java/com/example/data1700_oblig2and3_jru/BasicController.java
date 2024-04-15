@@ -5,19 +5,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BasicController {
 
     //Creating a new arraylist to save the tickets
     public final List<Ticket> ticketList = new ArrayList<>();
+
     @PostMapping("/saveTickets")
-    public void saveTickets(Ticket ticket) {
-        ticketList.add(ticket);
-        System.out.println("Ticket: " + String.valueOf(ticket));
+    public void saveTickets(Ticket newTicket) {
+        ticketList.add(newTicket);
+        System.out.println("Ticket: " + newTicket);
     }
 
     //////////////////////////////////////////////////////////
@@ -27,8 +25,23 @@ public class BasicController {
     }
 
     //////////////////////////////////////////////////////////
-    @DeleteMapping("/deleteTickets")
+
+    @GetMapping("/deleteTickets")
     public void deleteTickets() {
         ticketList.clear();
     }
 }
+//DeleteMapping doesn't work...
+/*
+    @DeleteMapping("/deleteTickets")
+    public List<Ticket> deleteTickets(@RequestParam Ticket newTicket) {
+        ticketList.remove(newTicket);
+        return ticketList;
+    }*/
+
+/*
+    @DeleteMapping("/deleteTicket")
+    public String deleteTicket(@RequestParam Integer newTicket){
+        ticketList.remove(newTicket);
+        return "The tickets were deleted";
+}*/

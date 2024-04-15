@@ -1,5 +1,6 @@
+//Gets values
 function inputTicket() {
-    const ticket = {
+    const newTicket = {
         movieSelector : $("#movieSelector").val(),
         amount: $("#amount").val(),
         firstName: $("#firstName").val(),
@@ -8,15 +9,16 @@ function inputTicket() {
         email: $("#email").val(),
     };
 
-    $.post("/saveTickets", ticket, function() {
+    $.post("/saveTickets", newTicket, function() {
         getTickets();
     })
-    ("#movieSelector").val("");
-    ("#amount").val("");
-    ("#firstName").val("");
-    ("#lastName").val("");
-    ("#phoneNr").val("");
-    ("#email").val("");
+    //Sets values
+    $("#movieSelector").val("");
+    $("#amount").val("");
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#phoneNr").val("");
+    $("#email").val("");
 }
 function getTickets() {
     $.get("/getTickets", function(data) {
@@ -37,6 +39,7 @@ function formatInput(data) {
     }
     out += "</table>";
     $("#inputResult").html(out);
+    console.log(data);
 
     // document.getElementById("inputResult").innerHTML
 }
@@ -45,3 +48,8 @@ function deleteTickets() {
         getTickets();
     });
 }
+//Attempt to make @DeleteMapping to work
+/*function deleteTickets() {
+    $("#deleteTickets").click(function() {
+        $("#deleteTickets").remove(onclick(inputTicket));
+    });*/

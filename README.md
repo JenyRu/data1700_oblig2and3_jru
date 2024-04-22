@@ -41,3 +41,8 @@ Headers
 
 Payload
 ![Payload](https://github.com/JenyRu/data1700_oblig2and3_jru/assets/101021281/54ab9359-d4ee-49e8-ad2b-7131480a6410)
+
+
+Oblig 3 Video
+=============
+

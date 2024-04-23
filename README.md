@@ -20,8 +20,7 @@ reset the input fields. Lastly the "Delete Current Tickets"-button will
 empty the array when clicked.
 
 
-utvides med en liten beskrivelse av webapplikasjonen (3-5 setninger).
-Styling og lagring på tjener/server
+"utvides med en liten beskrivelse av webapplikasjonen (3-5 setninger). Styling og lagring på tjener/server"
 
 Oblig 2 Screenshots
 ===================
@@ -33,16 +32,17 @@ The main page in browser with the form and the buttons
 SCREENSHOT AFTER BOOTSTRAP
 
 Screenshots of requests(GET,POST) from the network tab in developer tools with details about the headers and payload
+SCREENSHOT AFTER BOOTSTRAP
 
 
 Headers
 ![Headers](https://github.com/JenyRu/data1700_oblig2and3_jru/assets/101021281/1db86553-7cec-4e39-a27e-3f0f5302d1bb)
 
 
-Payload
+Payload    
 ![Payload](https://github.com/JenyRu/data1700_oblig2and3_jru/assets/101021281/54ab9359-d4ee-49e8-ad2b-7131480a6410)
 
 
 Oblig 3 Video
 =============
-
+Remember this

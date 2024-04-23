@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js.js"></script>
+    <title>Ticket oblig 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <title>Ticket oblig 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <h1>Order movie tickets</h1>
 <!--Onsubmit="return false" avoids a page reload.-->
 <form name="ticketForm" onsubmit="return false;">
     <p>
-        <label for="movieSelector">Pick a movie:</label>
+        <label class="form-label" for="movieSelector">Pick a movie:</label>
         <select id="movieSelector" required>
             <!--The first option has value="" to make it an invalid selection-->
             <option value="" disabled selected>Click to see movie options</option>
@@ -22,23 +25,23 @@
     </p>
     <p>
         <label for="amount">Ticket amount:</label>
-        <input type=number id="amount" min="1" max="99" required>
+        <input type=number id="amount" min="1" max="99" title="Please fill in ticket amount" required>
     </p>
     <!--I decided against a separate CSS sheet and used obsolete attributes for the table.-->
-    <table cellspacing="2" cellpadding="2" border="1">
+    <table class="table">
         <!--Automatic HTML form validation can be performed by the with the required attribute -->
         <tr>
             <td>First name</td>
             <td>
                 <label for="firstName"></label>
-                <input type="text" id="firstName" name="fName" title="Write your name using letters: A-Å" required>
+                <input type="text" id="firstName" name="fName" title="Write your first name using letters: A-Å" required>
             </td>
         </tr>
         <tr>
             <td>Last name</td>
             <td>
                 <label for="lastName"></label>
-                <input type="text" id="lastName" name="lName" title="Write your name using letters: A-Å" required>
+                <input type="text" id="lastName" name="lName" title="Write your last name using letters: A-Å" required>
             </td>
         </tr>
         <tr>
@@ -47,25 +50,33 @@
             <td>Phone</td>
             <td>
                 <label for="phoneNr"></label>
-                <input type="text" id="phoneNr" name="phoneNr" pattern="[0-9]{8}$" title="Must be a valid Norwegian phone number like: 47583126" required>
+                <input type="text" id="phoneNr" name="phoneNr" pattern="[0-9]{8}$"
+                       title="Must be a valid Norwegian phone number like: 47583126" required>
             </td>
         </tr>
         <tr>
             <td>Email</td>
             <td>
                 <label for="email"></label>
-                <input type="text" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Must be a valid email like: name@example.com" required>
+                <input type="text" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                       title="Must be a valid email like: name@example.com" required>
             </td>
         </tr>
     </table>
-    <button type="submit" onclick="inputTicket()">Buy tickets</button>
+    <button class="btn-success" type="submit" onclick="saveTickets()">Buy tickets</button>
 </form>
 
 <h2>Current tickets</h2>
 <!-- Adding the array table -->
-<div id="inputResult"></div>
+<div id="currentTickets"></div>
 
-<button onclick="deleteTickets()">Delete current tickets</button>
+<!--Button that deleted all tickets
+<button onclick="deleteTicket()">Delete current tickets</button> -->
+
+<script src="js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

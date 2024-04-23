@@ -25,8 +25,23 @@ public class TicketRepository {
         return getTickets;
     }
 
-    public void deleteTickets(Long id) {
-        String sql = "DELETE FROM Ticket WHERE id = ?";
-        db.update(sql);
+    public Ticket getOneTicket(int id) {
+        Object[] param = new Object[1];
+        param[0] = id;
+        String sql = "SELECT * FROM Ticket WHERE id=?";
+        Ticket oneTicket = db.queryForObject(sql, param, BeanPropertyRowMapper.newInstance(Ticket.class));
+        return oneTicket;
     }
+
+    public void editTicket(Ticket newTicket) {
+        String sql = "UPDATE Ticket SET movieSelector=?, amount=?, firstName=?, lastName=?, phoneNr=?, email=? WHERE id=?";
+        db.update(sql ,newTicket.getMovieSelector(), newTicket.getAmount(), newTicket.getFirstName(),
+                newTicket.getLastName(), newTicket.getPhoneNr(), newTicket.getEmail(), newTicket.getId());
+    }
+
+    public void deleteOneTicket(int id) {
+        String sql = "DELETE FROM Ticket WHERE id = ?";
+        db.update(sql, id);
+    }
+
 }

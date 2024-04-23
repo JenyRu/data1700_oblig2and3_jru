@@ -7,6 +7,7 @@ public class Ticket {
     private String lastName;
     private String phoneNr;
     private String email;
+    private int id;
 
     @Override
     public String toString() {
@@ -16,6 +17,16 @@ public class Ticket {
                 "Last name: " + lastName + "\n" +
                 "Phone Nr: " + phoneNr + "\n" +
                 "Email:" + email + "\n";
+    }
+
+    public Ticket(String movieSelector, int amount, String firstName, String lastName, String phoneNr, String email, int id) {
+        this.movieSelector = movieSelector;
+        this.amount = amount;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNr = phoneNr;
+        this.email = email;
+        this.id = id;
     }
 
     public String getMovieSelector() {
@@ -64,5 +75,13 @@ public class Ticket {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

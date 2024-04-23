@@ -9,15 +9,15 @@ import java.util.List;
 public class TicketController {
 
     //Creating a new arraylist to save the tickets.
-   // public final List<Ticket> ticketList = new ArrayList<>(); --> Part of Oblig 2
+    // public final List<Ticket> ticketList = new ArrayList<>(); --> Part of Oblig 2
 
     @Autowired
     private TicketRepository rep;
 
     @PostMapping("/saveTickets")
     public void saveTickets(Ticket newTicket) {
-       //Adding a new ticket.
-       // ticketList.add(newTicket); --> Part of Oblig 2
+        //Adding a new ticket.
+        // ticketList.add(newTicket); --> Part of Oblig 2
         rep.saveTickets(newTicket);
         System.out.println("Ticket: " + newTicket);
     }
@@ -25,17 +25,21 @@ public class TicketController {
     //////////////////////////////////////////////////////////
     @GetMapping("/getTickets")
     public List<Ticket> getTickets() {
-      //  return ticketList; Part of Oblig 2
+        //  return ticketList; Part of Oblig 2
         return rep.getTickets();
     }
 
     //////////////////////////////////////////////////////////
+    @GetMapping("getOneTicket")
+    public Ticket getOneTicket(int id) {
+        return rep.getOneTicket(id);
+    }
 
-    @DeleteMapping("/deleteTickets")
-    public List<Ticket> deleteTickets() {
-     //   ticketList.clear(); --> Part of Oblig 2
-        rep.deleteTickets(1L);
-        return null;
+    //////////////////////////////////////////////////////////
+    @DeleteMapping("/deleteOneTicket")
+    public void deleteOneTicket(int id) {
+        //   ticketList.clear(); --> Part of Oblig 2
+        rep.deleteOneTicket(id);
     }
 }
 //No good in the long run to use GetMapping

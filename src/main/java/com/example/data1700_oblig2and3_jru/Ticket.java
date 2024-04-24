@@ -7,7 +7,7 @@ public class Ticket {
     private String lastName;
     private String phoneNr;
     private String email;
-    private int id;
+    private long id;
 
     @Override
     public String toString() {
@@ -19,7 +19,7 @@ public class Ticket {
                 "Email:" + email + "\n";
     }
 
-    public Ticket(String movieSelector, int amount, String firstName, String lastName, String phoneNr, String email, int id) {
+    public Ticket(String movieSelector, int amount, String firstName, String lastName, String phoneNr, String email, long id) {
         this.movieSelector = movieSelector;
         this.amount = amount;
         this.firstName = firstName;
@@ -28,6 +28,17 @@ public class Ticket {
         this.email = email;
         this.id = id;
     }
+
+    public Ticket(String movieSelector, int amount, String firstName, String lastName, String phoneNr, String email) {
+        this.movieSelector = movieSelector;
+        this.amount = amount;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNr = phoneNr;
+        this.email = email;
+    }
+
+    Ticket(){}
 
     public String getMovieSelector() {
         return movieSelector;
@@ -77,11 +88,11 @@ public class Ticket {
         this.email = email;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

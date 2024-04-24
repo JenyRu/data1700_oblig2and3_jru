@@ -21,11 +21,11 @@ public class TicketRepository {
 
     public List<Ticket> getTickets() {
         String sql = "SELECT * FROM Ticket ORDER BY LOWER(lastName)";
-        List<Ticket> getTickets = db.query(sql, new BeanPropertyRowMapper(Ticket.class));
+        List<Ticket> getTickets = db.query(sql, new BeanPropertyRowMapper<>(Ticket.class));
         return getTickets;
     }
 
-    public Ticket getOneTicket(int id) {
+    public Ticket getOneTicket(long id) {
         Object[] param = new Object[1];
         param[0] = id;
         String sql = "SELECT * FROM Ticket WHERE id=?";
@@ -39,9 +39,11 @@ public class TicketRepository {
                 newTicket.getLastName(), newTicket.getPhoneNr(), newTicket.getEmail(), newTicket.getId());
     }
 
-    public void deleteOneTicket(int id) {
+    public void deleteOneTicket(long id) {
         String sql = "DELETE FROM Ticket WHERE id = ?";
         db.update(sql, id);
+        /*List<Ticket> afterDelete = db.query(sql, new BeanPropertyRowMapper<>(Ticket.class));
+        return afterDelete;*/
     }
 
 }

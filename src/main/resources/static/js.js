@@ -11,6 +11,10 @@
         email: $("#email").val(),
     };
 }*/
+$(function(){
+    getTickets();
+});
+
 function saveTickets() {
     const newTicket = {
 
@@ -22,7 +26,7 @@ function saveTickets() {
         email: $("#email").val(),
     };
     $.post("/saveTickets", newTicket, function () {
-        saveTickets();
+        getTickets();
     })
 
 
@@ -35,8 +39,10 @@ $("#phoneNr").val("");
 $("#email").val("");
 $("#id").val("");
 }
-const id = window.location.search.substring(1);
-const url = "/getOneTicket?"+id;
+
+/*$.get("getTickets", function (data) {
+    getTickets(data);
+});*/
 
 function getTickets() {
     $.get("/getTickets", function (data) {
@@ -51,22 +57,24 @@ function formatInput(data) {
 
     //Adding the length of the array to the table and centering the data.
     for (let input of data) {
-        out += "</tr><tr><td>" + data[input].movieSelector + "</td><td>" + data[input].amount +
-            "</td><td>" + data[input].firstName + "</td><td>" + data[input].lastName +
-            "</td><td>" + data[input].phoneNr + "</td><td>" + data[input].email + "</td><td>" +
-            "<button class='btn-warning' onclick='editTicket(" + data[input].id + ")'>Edit Ticket</button></td><td>" +
-            "<button class='btn-danger' onclick='deleteOneTicket(" + data[input].id + ")'>Delete Ticket</button></td>" +
+        console.log(input);
+        console.log(input.id);
+        out += "</tr><tr><td>" + input.movieSelector + "</td><td>" + input.amount +
+            "</td><td>" + input.firstName + "</td><td>" + input.lastName +
+            "</td><td>" + input.phoneNr + "</td><td>" + input.email + "</td><td>" +
+            "<button class='btn-warning' onclick='editTicket(" + input.id + ")'>Edit Ticket</button></td><td>" +
+            "<button class='btn-danger' onclick='deleteOneTicket(" + input.id + ")'>Delete Ticket</button></td>" +
             "</tr><tr>";
     }
     out += "</table>";
     $("#currentTickets").html(out);
-    console.log(data);
+
 
     // document.getElementById("inputResult").innerHTML
 }
 
 function editTicket() {
-    const ticket = {
+    const newTicket = {
         id: $("#id").val(),
         movieSelector: $("#movieSelector").val(),
         amount: $("#amount").val(),
@@ -75,7 +83,7 @@ function editTicket() {
         phoneNr: $("#phoneNr").val(),
         email: $("#email").val(),
     }
-    $.post("/editTicket", ticket, function () {
+    $.post("/editTicket", newTicket, function () {
         getTickets();
     });
 }
@@ -84,12 +92,22 @@ function editTicket() {
 function deleteOneTicket(id) {
     $.ajax({
         url: '/deleteOneTicket?id=' + id,
-        type: 'DELETE', //Uses DeleteMapping
-        success: function (data) {
+        type: 'DELETE',
+        success: [function () {
+            getTickets();
             //formatInput(data);
+            //console.log(id)
         }
+        ]
     });
 }
+/*function deleteOneTicket(id) {
+    const url = "/deleteOneTicket?id"+id;
+    $.ajax(url, function() {
+        clear.deleteOneTicket(id)
+    });
+}*/
+
 
 //Attempt to make @DeleteMapping to work
 /*function deleteTickets() {

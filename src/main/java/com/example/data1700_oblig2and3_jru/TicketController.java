@@ -31,13 +31,13 @@ public class TicketController {
 
     //////////////////////////////////////////////////////////
     @GetMapping("getOneTicket")
-    public Ticket getOneTicket(int id) {
+    public Ticket getOneTicket(long id) {
         return rep.getOneTicket(id);
     }
 
     //////////////////////////////////////////////////////////
     @DeleteMapping("/deleteOneTicket")
-    public void deleteOneTicket(int id) {
+    public void deleteOneTicket(long id) {
         //   ticketList.clear(); --> Part of Oblig 2
         rep.deleteOneTicket(id);
     }

@@ -42,8 +42,6 @@ public class TicketRepository {
     public void deleteOneTicket(long id) {
         String sql = "DELETE FROM Ticket WHERE id = ?";
         db.update(sql, id);
-        /*List<Ticket> afterDelete = db.query(sql, new BeanPropertyRowMapper<>(Ticket.class));
-        return afterDelete;*/
     }
 
 }

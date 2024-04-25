@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.7.1.js"></script>
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 </head>
@@ -12,9 +13,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <!--<h1>Order movie tickets</h1>-->
             <!--Onsubmit="return false" avoids a page reload.-->
-            <form name="ticketForm" id="ticketForm" onsubmit="return false;">
+            <form name="ticketForm" method="get" onsubmit="saveTickets(); return false;">
                 <h1 id="header">Order movie tickets</h1>
 
                 <div class="form-group">
@@ -38,19 +38,16 @@
                     <!--Automatic HTML form validation can be performed by the with the required attribute -->
                     <label for="firstName">First name:</label>
                     <input class="form-control" type="text" id="firstName" name="fName"
-                           title="Write your first name using letters: A-Å"
-                           required>
+                           title="Write your first name using letters: A-Å" required>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName">Last name:</label>
                     <input class="form-control" type="text" id="lastName" name="lName"
-                           title="Write your last name using letters: A-Å"
-                           required>
+                           title="Write your last name using letters: A-Å" required>
                 </div>
 
-                <!--The standard pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" was
-                changed to "[0-9]{8}" because of personal preference-->
+                <!--The standard regex pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" was changed to "[0-9]{8}"-->
                 <div class="form-group">
                     <label for="phoneNr">Phone:</label>
                     <input class="form-control" type="text" id="phoneNr" name="phoneNr" pattern="[0-9]{8}$"
@@ -65,77 +62,22 @@
                 </div>
 
                 <div class="form-group">
-                    <button id="confirm" class="btn-success" type="submit" onclick="saveTickets()">Buy Ticket</button>
+                    <button id="confirm" class="btn-success" type="submit">Buy Ticket</button>
                 </div>
 
                 <h2>Current tickets</h2>
-                <!-- Adding the array table -->
+                <!-- Adding the tickets in a table -->
                 <div class="form-group" id="currentTickets"></div>
 
             </form>
-
-            <div class="form-group" hidden>
-                <h3>Edit Ticket</h3>
-                <form id="ticketId" return false;>
-
-                </form>
-                <button onclick="updateTicket()">Update Ticket</button>
-            </div>
-
-            <!--<h2>Current tickets</h2>
-            &lt;!&ndash; Adding the array table &ndash;&gt;
-            <div id="currentTickets"></div>-->
         </div>
     </div>
 </div>
-<!--I decided against a separate CSS sheet and used obsolete attributes for the table.-->
-<!--    <table class="table">
-        &lt;!&ndash;Automatic HTML form validation can be performed by the with the required attribute &ndash;&gt;
-        <tr>
-            <td>First name</td>
-            <td>
-                <label for="firstName"></label>
-                <input type="text" id="firstName" name="fName" title="Write your first name using letters: A-Å" required>
-            </td>
-        </tr>
-        <tr>
-            <td>Last name</td>
-            <td>
-                <label for="lastName"></label>
-                <input type="text" id="lastName" name="lName" title="Write your last name using letters: A-Å" required>
-            </td>
-        </tr>
-        <tr>
-            &lt;!&ndash;The standard pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" was
-            changed to "[0-9]{8}" because of personal preference&ndash;&gt;
-            <td>Phone</td>
-            <td>
-                <label for="phoneNr"></label>
-                <input type="text" id="phoneNr" name="phoneNr" pattern="[0-9]{8}$"
-                       title="Must be a valid Norwegian phone number like: 47583126" required>
-            </td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <label for="email"></label>
-                <input type="text" id="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                       title="Must be a valid email like: name@example.com" required>
-            </td>
-        </tr>
-    </table>-->
-<!--    <button class="btn-success" type="submit" onclick="saveTickets()">Buy tickets</button>
-</form>
-
-<h2>Current tickets</h2>
-&lt;!&ndash; Adding the array table &ndash;&gt;
-<div id="currentTickets"></div>-->
 
 <!--Button that deleted all tickets
 <button onclick="deleteTicket()">Delete current tickets</button> -->
 
 <script src="js.js"></script>
-
 
 </body>
 </html>

@@ -1,54 +1,27 @@
-//Gets values
-/*function inputTicket() {
-    let id = 0;
-    const newTicket = {
-        id: window.location.search.substring(1),
-        movieSelector: $("#movieSelector").val(),
-        amount: $("#amount").val(),
-        firstName: $("#firstName").val(),
-        lastName: $("#lastName").val(),
-        phoneNr: $("#phoneNr").val(),
-        email: $("#email").val(),
-    };
-}*/
-
-/*
-let redigerBilett = false;
-let idBilett = 0;
-*/
+let editingTicket = false;
+let idTicket = 0;
 
 $(function () {
     getTickets();
 });
 
 function saveTickets() {
-/*    let inputs = document.forms["ticketForm"]["firstName"].value;
-    if (inputs) {
-        alert("Name must be filled out");
-        return false;
-    }*/
-
-
-    if (redigerBilett) {
-        redigerBilett = false;
-
+    if (editingTicket) {
+        editingTicket = false;
         const ticket = {
-            id: idBilett,
+            id: idTicket,
             movieSelector: $("#movieSelector").val(),
             amount: $("#amount").val(),
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
             phoneNr: $("#phoneNr").val(),
             email: $("#email").val(),
-        };
-
-        $.post("/saveTickets", ticket, function () {
+        }
+        $.post("/editTicket", ticket, function () {
             getTickets();
         })
-
     } else {
         const newTicket = {
-
             movieSelector: $("#movieSelector").val(),
             amount: $("#amount").val(),
             firstName: $("#firstName").val(),
@@ -56,23 +29,20 @@ function saveTickets() {
             phoneNr: $("#phoneNr").val(),
             email: $("#email").val(),
         };
-
         $.post("/saveTickets", newTicket, function () {
             getTickets();
         })
-
-
-//Resets values after confirming
-        // $("#id").val("");
-        //   $("#header").html("Order movie tickets");
-        $("#movieSelector").val("");
-        $("#amount").val("");
-        $("#firstName").val("");
-        $("#lastName").val("");
-        $("#phoneNr").val("");
-        $("#email").val("");
-//    $("#confirm").html("Buy Ticket");
     }
+    //Resets values after confirming
+    $("#movieSelector").val("");
+    $("#amount").val("");
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#phoneNr").val("");
+    $("#email").val("");
+
+    $("#header").val("Order Movie Tickets");
+    $("#confirm").val("Buy Ticket");
 }
 
 function getTickets() {
@@ -93,44 +63,37 @@ function formatInput(data) {
         out += "</tr><tr><td>" + input.movieSelector + "</td><td>" + input.amount +
             "</td><td>" + input.firstName + "</td><td>" + input.lastName +
             "</td><td>" + input.phoneNr + "</td><td>" + input.email + "</td><td>" +
-            "<button class='btn-warning' onclick=\"editTicket('" + input.id + "', '" + input.movieSelector + "', '" + input.amount + "', '" + input.firstName + "', '" + input.lastName + "', '" + input.phoneNr + "', '" + input.email + "')\">Edit Ticket</button></td><td>" +
-            "<button class='btn-danger' onclick='deleteOneTicket(" + input.id + ")'>Delete Ticket</button></td>" +
+            "<button class='btn-warning' type='button' onclick=\"editTicket('" + input.id + "', '" + input.movieSelector + "', '" + input.amount + "', '" + input.firstName + "', '" + input.lastName + "', '" + input.phoneNr + "', '" + input.email + "')\">Edit Ticket</button></td><td>" +
+            "<button class='btn-danger' type='button' onclick='deleteOneTicket(" + input.id + ")'>Delete Ticket</button></td>" +
             "</tr><tr>";
     }
     out += "</table>";
     $("#currentTickets").html(out);
-
 }
 
-//delete 1 by 1 ticket, not all (but both options be ok)
+//deletes individual tickets
 function deleteOneTicket(id) {
     $.ajax({
         url: '/deleteOneTicket?id=' + id,
         type: 'DELETE',
         success: [function () {
             getTickets();
-            //formatInput(data);
-            //console.log(id)
         }
         ]
     });
 }
 
-//const formData = new FormData ("#ticketId");
-
+//edits individual tickets
 function editTicket(id, movieSelector, amount, firstName, lastName, phoneNr, email) {
-
-    console.log(id, movieSelector, amount, firstName, lastName, phoneNr, email);
-    // $("#id").val(id);
-    $("#header").html("Edit Ticket");
+    $("#header").text("Edit Ticket");
     $("#movieSelector").val(movieSelector);
     $("#amount").val(amount);
     $("#firstName").val(firstName);
     $("#lastName").val(lastName);
     $("#phoneNr").val(phoneNr);
     $("#email").val(email);
-    $("#confirm").html("Save Changes");
+    $("#confirm").text("Save Changes");
 
-    redigerBilett = true;
-    idBilett = id;
+    editingTicket = true;
+    idTicket = id;
 }

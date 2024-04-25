@@ -36,19 +36,16 @@ public class TicketController {
     }
 
     //////////////////////////////////////////////////////////
-//Tor's way
-/*    @PostMapping("editTicket")
-    public void editTicket(Ticket ticket) {
-        rep.editTicket(ticket);
-    }*/
-
-    //OR
-
-//Cosmin's way
     @PostMapping("/editTicket")
     public String editTicket(Ticket ticket) {
         rep.editTicket(ticket);
         return "edited";
+    }
+
+    //////////////////////////////////////////////////////////
+    @PostMapping("/updateTickets")
+    public void updateTickets(Ticket ticket) {
+        rep.saveTickets(ticket);
     }
 
     //////////////////////////////////////////////////////////
@@ -58,23 +55,3 @@ public class TicketController {
         rep.deleteOneTicket(id);
     }
 }
-//No good in the long run to use GetMapping
-/*    @GetMapping("/deleteTickets")
-    public void deleteTickets() {
-        ticketList.clear();
-    }*/
-//DeleteMapping doesn't work... gotta add id
-/*
-    @DeleteMapping("/deleteTickets")
-    public List<Ticket> deleteTickets() {
-        ticketList.clear();
-        return ticketList;
-    }*/
-//^This one just deletes ONE and I haven't specified WHICH ONE I wanna delete
-
-/*
-    @DeleteMapping("/deleteTicket")
-    public String deleteTicket(@RequestParam Integer newTicket){
-        ticketList.remove(newTicket);
-        return "The tickets were deleted";
-}*/

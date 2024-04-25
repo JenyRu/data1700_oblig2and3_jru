@@ -16,11 +16,10 @@ ticket amount, first name, last name, phone number, and email.
 The "Buy Ticket"-button can only be clicked if the form input is validated. 
 When the form is submitted successfully the input is sent as objects 
 to an array and displayed under "Current Tickets". This will simultaneously 
-reset the input fields. Lastly the "Delete Current Tickets"-button will 
-empty the array when clicked.
+reset the input fields. Buttons for editing and deleting individual tickets 
+were added next that updates, or deletes the ticket, both on the page and in the database.
+Bootstrap styling was also applied.
 
-
-"utvides med en liten beskrivelse av webapplikasjonen (3-5 setninger). Styling og lagring på tjener/server"
 
 Oblig 2 Screenshots
 ===================
@@ -29,10 +28,12 @@ Spring Boot server running
 
 
 The main page in browser with the form and the buttons
-SCREENSHOT AFTER BOOTSTRAP
+![image](https://github.com/JenyRu/data1700_oblig2and3_jru/assets/101021281/5ddcf97f-cd52-4345-9abb-c2a9bdeb8a3b)
+
 
 Screenshots of requests(GET,POST) from the network tab in developer tools with details about the headers and payload
-SCREENSHOT AFTER BOOTSTRAP
+![image](https://github.com/JenyRu/data1700_oblig2and3_jru/assets/101021281/919d0672-8b9a-4081-9b49-c6180169e633)
+
 
 
 Headers
@@ -45,4 +46,4 @@ Payload
 
 Oblig 3 Video
 =============
-Remember this
+https://youtu.be/lupNHh7WyY0

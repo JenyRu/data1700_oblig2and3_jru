@@ -12,22 +12,24 @@
     };
 }*/
 
+/*
 let redigerBilett = false;
 let idBilett = 0;
+*/
 
 $(function () {
     getTickets();
 });
 
 function saveTickets() {
-    /*      let inputs = document.forms["ticketForm"]["firstName"].value;
-          if (inputs ) {
-              alert("Name must be filled out");
-              return false;
-          }*/
+/*    let inputs = document.forms["ticketForm"]["firstName"].value;
+    if (inputs) {
+        alert("Name must be filled out");
+        return false;
+    }*/
 
 
-    /*if (redigerBilett) {
+    if (redigerBilett) {
         redigerBilett = false;
 
         const ticket = {
@@ -44,39 +46,40 @@ function saveTickets() {
             getTickets();
         })
 
-    } else {*/
-    const newTicket = {
+    } else {
+        const newTicket = {
 
-        movieSelector: $("#movieSelector").val(),
-        amount: $("#amount").val(),
-        firstName: $("#firstName").val(),
-        lastName: $("#lastName").val(),
-        phoneNr: $("#phoneNr").val(),
-        email: $("#email").val(),
-    };
+            movieSelector: $("#movieSelector").val(),
+            amount: $("#amount").val(),
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            phoneNr: $("#phoneNr").val(),
+            email: $("#email").val(),
+        };
 
-    $.post("/saveTickets", newTicket, function () {
-        getTickets();
-    })
+        $.post("/saveTickets", newTicket, function () {
+            getTickets();
+        })
 
 
 //Resets values after confirming
-    // $("#id").val("");
-    $("#header").html("Order movie tickets");
-    $("#movieSelector").val("");
-    $("#amount").val("");
-    $("#firstName").val("");
-    $("#lastName").val("");
-    $("#phoneNr").val("");
-    $("#email").val("");
-    $("#confirm").html("Buy Ticket");
+        // $("#id").val("");
+        //   $("#header").html("Order movie tickets");
+        $("#movieSelector").val("");
+        $("#amount").val("");
+        $("#firstName").val("");
+        $("#lastName").val("");
+        $("#phoneNr").val("");
+        $("#email").val("");
+//    $("#confirm").html("Buy Ticket");
+    }
 }
 
-    function getTickets() {
-        $.get("/getTickets", function (data) {
-            formatInput(data);
-        });
-    }
+function getTickets() {
+    $.get("/getTickets", function (data) {
+        formatInput(data);
+    });
+}
 
 //Using the same table attributes from html for a cohesive look.
 function formatInput(data) {

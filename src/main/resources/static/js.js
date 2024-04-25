@@ -41,8 +41,8 @@ function saveTickets() {
     $("#phoneNr").val("");
     $("#email").val("");
 
-    $("#header").val("Order Movie Tickets");
-    $("#confirm").val("Buy Ticket");
+    $("#header").text("Order Movie Tickets");
+    $("#confirm").text("Buy Ticket");
 }
 
 function getTickets() {

@@ -30,9 +30,25 @@ public class TicketController {
     }
 
     //////////////////////////////////////////////////////////
-    @GetMapping("getOneTicket")
-    public Ticket getOneTicket(long id) {
-        return rep.getOneTicket(id);
+    @GetMapping("getCurrentTicket")
+    public Ticket getCurrentTicket(long id) {
+        return rep.getCurrentTicket(id);
+    }
+
+    //////////////////////////////////////////////////////////
+//Tor's way
+/*    @PostMapping("editTicket")
+    public void editTicket(Ticket ticket) {
+        rep.editTicket(ticket);
+    }*/
+
+    //OR
+
+//Cosmin's way
+    @PostMapping("/editTicket")
+    public String editTicket(Ticket ticket) {
+        rep.editTicket(ticket);
+        return "edited";
     }
 
     //////////////////////////////////////////////////////////

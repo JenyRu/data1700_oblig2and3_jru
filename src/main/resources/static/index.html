@@ -14,8 +14,8 @@
         <div class="col-md-6 col-md-offset-3">
             <!--<h1>Order movie tickets</h1>-->
             <!--Onsubmit="return false" avoids a page reload.-->
-            <form name="ticketForm" onsubmit="return false;">
-                <h1>Order movie tickets</h1>
+            <form name="ticketForm" id="ticketForm" onsubmit="return false;">
+                <h1 id="header">Order movie tickets</h1>
 
                 <div class="form-group">
                     <label class="form-label" for="movieSelector">Pick a movie:</label>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn-success" type="submit" onclick="saveTickets()">Buy tickets</button>
+                    <button id="confirm" class="btn-success" type="submit" onclick="saveTickets()">Buy Ticket</button>
                 </div>
 
                 <h2>Current tickets</h2>
@@ -73,6 +73,14 @@
                 <div class="form-group" id="currentTickets"></div>
 
             </form>
+
+            <div class="form-group" hidden>
+                <h3>Edit Ticket</h3>
+                <form id="ticketId" return false;>
+
+                </form>
+                <button onclick="updateTicket()">Update Ticket</button>
+            </div>
 
             <!--<h2>Current tickets</h2>
             &lt;!&ndash; Adding the array table &ndash;&gt;
